@@ -4,3 +4,9 @@ html,body,#app{
     padding: 0;
     /*box-sizing: border-box;*/
 }
+.box-card{
+    margin-top: 15px;
+    font-size: 10px;
+    /*element默认情况下内部样式权重级比较高 ，用!important覆盖*/
+    box-shadow: 0 1px 1px rgba(0,0,0,.15) !important;
+}
