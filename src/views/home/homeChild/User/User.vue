@@ -43,7 +43,7 @@
             <el-button  @click="isdeleteok(scope.row.id)" type="danger" icon="el-icon-delete" size="mini"></el-button>
             <!--分配角色按钮-->
             <el-tooltip class="item" effect="dark" content="分配角色" placement="top-start" :enterable="false">
-              <el-button type="warning" icon="el-icon-setting" size="mini" ></el-button>
+              <el-button  @click="AssigningRoles(scope.row)" type="warning" icon="el-icon-setting" size="mini" ></el-button>
             </el-tooltip>
         </template>
           </el-table-column>
@@ -83,7 +83,6 @@
         <el-input v-model="ruleForm.mobile"></el-input>
         </el-form-item>
         </el-form>
-
       </span>
       <span slot="footer" class="dialog-footer">
     <el-button @click="showshow = false">取 消</el-button>
@@ -114,6 +113,28 @@
     <el-button type="primary" @click="ModifyuserClick">确 定</el-button>
       </span>
     </el-dialog>
+<!--分配角色弹出框-->
+    <el-dialog
+            @close="setUserR"
+            title="提示"
+            :visible.sync="isdialogVisible"
+            width="30%">
+      <div>当前的用户：{{Usrlst.username}}</div>
+      <div>当前的角色：{{Usrlst.role_name}}</div>
+      <div>分配新角色:
+        <el-select  v-model="selectRoleld" placeholder="请选择">
+          <el-option v-for="item in ulist"
+                  :key="item.id"
+                  :label="item.roleName"
+                  :value="item.id">
+          </el-option>
+        </el-select>
+      </div>
+      <span slot="footer" class="dialog-footer">
+    <el-button @click="isdialogVisible = false">取 消</el-button>
+    <el-button type="primary" @click="saveRoleInfo">确 定</el-button>
+  </span>
+    </el-dialog>
   </div>
 </template>
 <script>
@@ -136,6 +157,11 @@
        }
      }
         return{
+          selectRoleld:{},
+       //所有的用户角色列表
+          ulist:{},
+          Usrlst:{},
+          isdialogVisible:false,
         //封装接口文档请求的参数
         UserList:{
           //我们需要输入的内容
@@ -338,7 +364,29 @@
           return this.getUserList();
         }
       },
-
+      //弹出分配角色提示框
+      async  AssigningRoles(row){
+        this.isdialogVisible=true;
+        this.Usrlst=row;
+        //获取所有的用户角色列表
+         const {data:res} = await this.$http.get('roles');
+         if(res.meta.status!==200 ){
+            this.$message.error("查找失败");
+         }
+         this.ulist=res.data;
+        console.log( this.ulist);
+      },
+      //触发保存信息
+      async  saveRoleInfo(){
+       const {data:req}=await this.$http.put(`users/${this.Usrlst.id}/role`,{rid:this.selectRoleld})
+        console.log(req)
+        if(req.meta.status!==200 ){
+          this.$message.error("更新角色失败");
+        }
+        this.$message.success("更新角色成功!");
+        this.isdialogVisible=false;
+        return this.getUserList();
+      },
     }
   }
 </script>

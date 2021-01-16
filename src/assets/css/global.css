@@ -3,6 +3,8 @@ html,body,#app{
     margin: 0;
     padding: 0;
     /*box-sizing: border-box;*/
+    /*响应式终结者，屏幕宽度变小不会出现响应式*/
+    min-width: 1366px;
 }
 .box-card{
     margin-top: 15px;

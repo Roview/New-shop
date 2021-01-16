@@ -5,7 +5,8 @@ import Login from "../views/LandingPage/Login";
 const home=()=>import('../views/home/home')
 const Welcome=()=>import('../views/home/homeChild/Welcome')
 const user =()=>import('../views/home/homeChild/User/User')
-const roles =()=>import('../views/home/homeChild/User/roles')
+const roles =()=>import('../views/power/roles')
+const rights=()=>import('../views/power/Rights')
 Vue.use(VueRouter)
 
 const routes = [
@@ -28,13 +29,11 @@ const routes = [
       {path:'/Welcome', component:Welcome},
       //这个地址就是打开router跳转的地址
       {path:'/users', component:user},
-      {path:'/roles',component:roles}
+      {path:'/roles',component:roles},
+      {path:'/rights',component:rights}
       ]
   },
-
-
 ]
-
 const router = new VueRouter({
   mode: 'history',
   base: process.env.BASE_URL,

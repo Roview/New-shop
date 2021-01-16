@@ -16,6 +16,7 @@ import {
   Table,
   TableColumn,
   Dialog,
+  Cardc
 } from 'element-ui';
 Vue.use(Form);
 Vue.use(FormItem);
@@ -28,6 +29,7 @@ Vue.use(Main);
 Vue.use(Table);
 Vue.use(TableColumn);
 Vue.use(Dialog);
+Vue.use(Cardc);
 //面包屑导航
 Vue.use(Breadcrumb);
 Vue.use(BreadcrumbItem);

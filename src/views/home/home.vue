@@ -6,7 +6,6 @@
 <!--    @click="warningClick" warning-->
     <el-button type="warning"  @click="java">退出</el-button>
 <!--退出询问是否退出-->
-
   </el-header>
   <el-container>
 <!--主体左区域-->
