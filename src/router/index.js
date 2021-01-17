@@ -7,6 +7,7 @@ const Welcome=()=>import('../views/home/homeChild/Welcome')
 const user =()=>import('../views/home/homeChild/User/User')
 const roles =()=>import('../views/power/roles')
 const rights=()=>import('../views/power/Rights')
+const categories=()=>import('../views/cate/categories')
 Vue.use(VueRouter)
 
 const routes = [
@@ -30,7 +31,8 @@ const routes = [
       //这个地址就是打开router跳转的地址
       {path:'/users', component:user},
       {path:'/roles',component:roles},
-      {path:'/rights',component:rights}
+      {path:'/rights',component:rights},
+      {path: '/categories',component:categories},
       ]
   },
 ]

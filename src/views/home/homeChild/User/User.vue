@@ -115,7 +115,6 @@
     </el-dialog>
 <!--分配角色弹出框-->
     <el-dialog
-            @close="setUserR"
             title="提示"
             :visible.sync="isdialogVisible"
             width="30%">
