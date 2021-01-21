@@ -153,13 +153,7 @@
       },
        async showProgressBos(){
       const {data:res}=await this.$http.get(`/yuanton/1106975712662`)
-         // if (res.data.meta.status===200){
-         //     this.$message.success('获取物流成功');
-         // }
-         //   console.log(res);
-         //保存物流信息
          this.progressInfo=res.data
-         // this.$message.error('暂无物流信息');
          console.log(this.progressInfo);
          this.progressVisible=true
       }
