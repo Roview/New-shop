@@ -20,7 +20,7 @@ Vue.use(VueQuillEditor);
 Vue.component("tree-table", TreeTable);
 
 // 配置请求的BaseUrl地址
-axios.defaults.baseURL="http://timemeetyou.com:8889/api/private/v1/";
+axios.defaults.baseURL="http://www.ysqorz.top:8888/api/private/v1/";
 //请求拦截器
  axios.interceptors.request.use(res=>{
    //登陆期间，服务器并没有给你令牌，此时令牌为null
